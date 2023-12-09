@@ -13,8 +13,10 @@ from os.path import isdir, join
 from torch.utils.data.dataset import T_co
 from torch.utils.data import Dataset, DataLoader, random_split
 import sys
-# sys.path.append( 'k_space_reconstruction' )
-# sys.path.insert(0, 'D:/OneDrive - University of Moratuwa/Volume D/7 sem 2023/MI/code/IGS/k_space_reconstruction')
+print(sys.path)
+sys.path.append('/home/avishka/biyon/Undersamping_MRI/CPU_code/IGS' )
+print(sys.path)
+# sys.path.insert(0, '/home/avishka/biyon/Undersamping_MRI/CPU_code/IGS/k_space_reconstruction')
 from k_space_reconstruction.utils.kspace import RandomMaskFunc, MaskFunc, spatial2kspace, kspace2spatial, apply_mask
 # import k_space_reconstruction.utils.kspace
 from k_space_reconstruction.utils.io import get_dir_md5hash, get_file_md5hash
@@ -151,7 +153,7 @@ class PlACDCDataModule(pl.LightningDataModule):
 
 
 if __name__ == '__main__':
-    dataset = ACDCSet('database/training', ACDCTransform(RandomMaskFunc([0.08], [1])))
+    dataset = ACDCSet('/home/avishka/biyon/ACDC/database/training', ACDCTransform(RandomMaskFunc([0.08], [1])))
     print(len(dataset))
     ks, mask, y, x, mean, std, _, _, _ = dataset[420]
 
